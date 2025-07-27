@@ -8,7 +8,7 @@ from typing import Iterator
 
 import pandas as pd
 import requests
-from shared.state import State
+from shared.state.state import State
 from shared.amms import SwapAmm
 from shared.custom_types import Prices, TokenParameters
 from shared.helpers import add_leading_zeros

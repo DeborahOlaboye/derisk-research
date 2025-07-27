@@ -74,7 +74,7 @@ with patch.dict(
         InterestRateModels,
     )
     from shared.loan_entity import LoanEntity
-    from shared.state import State
+    from shared.state.state import State
 
 
 class MockLoanEntity(LoanEntity):

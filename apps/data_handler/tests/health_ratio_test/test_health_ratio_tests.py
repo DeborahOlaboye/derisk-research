@@ -7,7 +7,7 @@ from unittest.mock import MagicMock, patch
 from data_handler.handlers.health_ratio_level.health_ratio_handlers import (
     BaseHealthRatioHandler,
 )
-from shared.state import State, LoanEntity
+from shared.state.state import State, LoanEntity
 from shared.custom_types import TokenValues
 from shared.constants import ProtocolIDs
 

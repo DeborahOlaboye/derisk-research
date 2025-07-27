@@ -11,7 +11,7 @@ from collections import defaultdict
 
 import pandas as pd
 import streamlit as st
-from shared.state import State
+from shared.state.state import State
 from shared.amms import SwapAmm
 from shared.constants import PAIRS
 

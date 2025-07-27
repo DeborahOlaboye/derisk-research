@@ -10,7 +10,7 @@ from decimal import Decimal
 from unittest.mock import Mock, patch, AsyncMock, MagicMock
 from data_handler.tests.conftest import mock_db_connector
 from data_handler.handlers.helpers import get_collateral_token_range, get_range
-from shared.state import State
+from shared.state.state import State
 from shared.loan_entity import LoanEntity
 from data_handler.db.models.loan_states import LoanState
 

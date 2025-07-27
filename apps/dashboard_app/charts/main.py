@@ -8,7 +8,7 @@ import plotly
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
-from shared.state import State
+from shared.state.state import State
 from shared.helpers import (
     add_leading_zeros,
     extract_token_addresses,

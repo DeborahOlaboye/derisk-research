@@ -3,7 +3,8 @@ This module organizes and handles the loan data in a tabular manner.
 """
 
 import pandas as pd
-from shared.state import State, NostraAlphaState, NostraMainnetState
+from shared.state import NostraAlphaState, NostraMainnetState
+from shared.state.state import State
 from shared.custom_types import Prices
 
 

@@ -11,7 +11,7 @@ import plotly.express
 import plotly.graph_objs
 from shared.amms import SwapAmm
 from shared.custom_types import Prices
-from shared.state import State
+from shared.state.state import State
 
 from .constants import CommonValues
 from helpers.settings import TOKEN_SETTINGS
