@@ -11,7 +11,7 @@ import pandas as pd
 from shared import blockchain_call
 from shared.constants import TOKEN_SETTINGS
 from shared.custom_types import Prices
-from shared.state import State
+from shared.state.state import State
 
 from dashboard_app.helpers.loans_table import (
     get_protocol,
@@ -38,6 +38,13 @@ def get_general_stats(
         number_of_active_borrowers = (
             state.compute_number_of_active_loan_entities_with_debt()
         )
+        df = loan_stats.get(protocol)
+        if df is None or not isinstance(df, pd.DataFrame):
+            continue  # Skip if data is missing
+
+        # Helper function to safely get column sum
+        def safe_sum(column_name: str) -> float:
+            return round(df[column_name].sum(), 4) if column_name in df.columns else 0.0
         data.append(
             {
                 "Protocol": protocol,
@@ -50,13 +57,9 @@ def get_general_stats(
                 #  protocols use user-level liquidations.
                 "Number of active loans": state.compute_number_of_active_loan_entities(),
                 "Number of active borrowers": number_of_active_borrowers,
-                "Total debt (USD)": round(loan_stats[protocol]["Debt (USD)"].sum(), 4),
-                "Total risk adjusted collateral (USD)": round(
-                    loan_stats[protocol]["Risk-adjusted collateral (USD)"].sum(), 4
-                ),
-                "Total Collateral (USD)": round(
-                    loan_stats[protocol]["Collateral (USD)"].sum(), 4
-                ),
+                "Total debt (USD)": safe_sum("Debt (USD)"),
+                "Total risk adjusted collateral (USD)": safe_sum("Risk-adjusted collateral (USD)"),
+                "Total Collateral (USD)": safe_sum("Collateral (USD)"),
             }
         )
     data = pd.DataFrame(data)

@@ -141,13 +141,13 @@ class DashboardDataHandler:
         self.prices = get_prices(token_decimals=self.underlying_addresses_to_decimals)
         logger.info("Prices set.")
 
-    def _collect_token_parameters(self):
+    async def _collect_token_parameters(self):
         """
         Collect token parameters.
         :return:
         """
         logger.info("Collecting token parameters.")
-        asyncio.run(self.zklend_state.collect_token_parameters())
+        await self.zklend_state.collect_token_parameters()
         logger.info("Token parameters collected.")
 
     def _set_underlying_addresses_to_decimals(self):
